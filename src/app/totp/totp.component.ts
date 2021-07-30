@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -16,7 +17,7 @@ export class TotpComponent implements OnInit {
   errorMessage = '';
   currentUser: any;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) {}
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
   	if (this.tokenStorage.getUser()) {
@@ -43,6 +44,6 @@ export class TotpComponent implements OnInit {
 	this.isLoginFailed = false;
 	this.isLoggedIn = true;
 	this.currentUser = this.tokenStorage.getUser();
-    window.location.reload();
+  this.router.navigate(['/home']);
   }
 }

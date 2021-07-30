@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { TotpComponent } from './totp/totp.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { AuthGuard } from './_helpers/AuthGuard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     FormsModule,
     HttpClientModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
